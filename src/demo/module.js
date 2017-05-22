@@ -25,6 +25,11 @@ export class MyReactComp extends ReactLazyComponent {
   constructor(props) {
     super(props, {
       files: [`${props.topology.staticsUrl}react-module.bundle.js`],
+      resolve: {
+        experiments: () => {
+          return Promise.resolve({'spec.fed.ReactModuleContainerWithResolve': true});
+        }
+      },
       component: 'MyApp3.RealReactComp'
     });
   }
